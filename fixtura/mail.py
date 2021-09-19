@@ -2,7 +2,8 @@ import poplib
 import email
 import time
 
-class MailHelper(object):
+
+class MailHelper:
 
     def __init__(self, app):
         self.app = app
@@ -16,12 +17,12 @@ class MailHelper(object):
             if num > 0:
                 for n in range(num):
                     msglines = pop.retr(n+1)[1]
-                    msgtext = "\n".join(map(lambda x: x.decode('utf-8'), msglines))
+                    msgtext = "\n".join(map(lambda x: x.decode("utf-8"), msglines))
                     msg = email.message_from_string(msgtext)
                     if msg.get("Subject") == subject:
                         pop.dele(n+1)
                         pop.quit()
                         return msg.get_payload()
-            pop.close()
+            pop.quit()
             time.sleep(3)
         return None
