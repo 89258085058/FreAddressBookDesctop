@@ -7,7 +7,7 @@ password = "root"
 
 def test_delete_project(app):
     if len(app.project.get_project_list()) == 0:
-        app.project.create(Project(name="blah-blah"))
+        app.project.create(Project(name="NewName"))
     old_projects = app.soap.get_project_list(username, password)
     project = random.choice(old_projects)
     app.project.delete_project_by_id(project.id)
