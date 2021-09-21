@@ -8,7 +8,7 @@ class ProjectHelper:
 
     def open_project_page(self):
         wd = self.app.wd
-        if not (wd.current_url.endswith("/manage_proj_page.php")):
+        if not (wd.current_url.endswith("manage_proj_page.php")):
             wd.get(self.app.base_url + "manage_proj_page.php")
 
     def create(self, project):
